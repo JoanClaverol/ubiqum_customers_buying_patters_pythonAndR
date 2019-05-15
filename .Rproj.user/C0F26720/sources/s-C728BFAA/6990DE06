@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1557908164407.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2902621191",
+    "id" : "6990DE06",
+    "lastKnownWriteTime" : 1557923384,
+    "last_content_update" : 1557923384354,
+    "path" : "~/UbiqumCodeAcademy/projects/ubiqum_python_DataAnalytics/Investigat_customer_buying_patterns/scripts/report.Rmd",
+    "project_path" : "scripts/report.Rmd",
+    "properties" : {
+        "cursorPosition" : "102,0",
+        "last_setup_crc32" : "C728BFAA7d023e20",
+        "scrollLine" : "82",
+        "tempName" : "Untitled2",
+        "working_dir" : "project"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

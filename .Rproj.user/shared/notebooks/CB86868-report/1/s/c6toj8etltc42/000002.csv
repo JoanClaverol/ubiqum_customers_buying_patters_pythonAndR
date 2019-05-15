@@ -1,0 +1,7 @@
+"1","in.store      int64
+age           int64
+items         int64
+amount      float64
+region        int64
+dtype: object
+"

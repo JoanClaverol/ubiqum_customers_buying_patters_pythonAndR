@@ -1,0 +1,106 @@
+---
+title: "Investigate Customer Buying Patterns_python&R"
+author: "Joan Claverol - Data mentor"
+date: "15/5/2019"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+```
+
+```{r import r libraries}
+if (require(pacman) == FALSE) {
+  install.packages("pacman")
+}
+pacman::p_load(reticulate)
+```
+
+```{python import pyton libraries}
+import pandas as pd
+import os
+import numpy as np
+```
+
+## Introduction 
+
+Blackwell Electronics’ CTO Danielle Sherman has asked you to use data mining methods to explore the customer transaction data collected from recent online and in-store sales to infer any insights and conclusions about customer purchasing behavior, specifically:
+
+* Do customers in different regions spend more per transaction? Which regions spend the most/least?
+* Are there differences in the age of customers between regions? If so, can we predict the age of a customer in a region based on other demographic data?
+* Is there any correlation between age of a customer and if the transaction was made online or in the store? Or do other factors correlate to an online or in-store transaction?
+* Is there a relationship between the number of items purchased and amount spent?
+This task requires that you prepare one deliverable:
+
+Customer Buying Patterns Report. A zip file that includes:
+
+* A two to three page Word or PowerPoint document in which you:
+     - Summarize your findings and conclusions regarding the questions posed about customer purchasing behavior
+     - Explain how the results of each classifier you ran support your conclusions
+A narrative explaining the results of each algorithm you ran in RapidMiner, but the technical output is not needed in the report itself. Please only include it in a separate file so the mentors may review your work.
+
+The steps in the following tabs will walk you through this process.
+
+
+## Loading the data 
+
+Let's start by loading the data on python and see the head (first 6 lines) of our dataset: 
+
+```{python}
+mainpath = "data/"
+filename = "Blackwell_Hist_Sample.csv"
+fullpath = os.path.join(mainpath, filename)
+
+data = pd.read_csv(fullpath)
+data = pd.DataFrame(data)
+data.head()
+data.dtypes
+```
+
+One cool thing would be to transform the 1 and 0 to "online" or "in-store": 
+
+```{python}
+data_list = data["in.store"]
+data["in.store"] = data["in.store"].replace(to_replace=[0,1],
+                                            value=["online", "store"])
+data.head()
+```
+
+Let's change also the name for the region: 
+
+```{python}
+data["region"] = data["region"].replace(to_replace=[1,2,3,4],
+                                        value=["East","West","South","Central"])
+data.head()
+```
+
+## Checking at the stadistics of the data
+
+Look for the *min*, *max* and *average values* for the numeric data: 
+
+#### Statistics {.tabset}
+
+##### Age
+
+```{python}
+array = data["age"]
+
+# minimum value
+minimum = min(array)
+
+# maximum value
+maximum = max(array)
+
+# average value
+average = np.mean(array)
+
+# create a list to store the results
+list_statistics = [["age", minimum, maximum, average]]
+statistics = pd.DataFrame(list_statistics, columns=['variable','minimum',
+                                                    'maximum','average'])
+statistics
+```
+
+
